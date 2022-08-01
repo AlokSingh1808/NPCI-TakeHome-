@@ -1,0 +1,33 @@
+<h2 >Product List</h2>
+
+<div class="container-fluid">
+    <table class="table  table-hover table-primary table-striped">
+        <tr class="head">
+            <th>Product Id</th>
+            <th>sku</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Image Url</th>
+            <th>Units in Stock</th>
+            <th>Date Created</th>
+            <th>Last Updated</th>
+            <th>Category Id</th>
+        </tr>
+        <tr *ngFor = "let list of products">
+        <td>{{ list.id }}</td>
+        <td>{{ list.sku }}</td>
+        <td>{{ list.pname }}</td>
+        <td>{{ list.description }}</td>
+        <td>{{ list.unitPrice }}</td>
+        <td>{{ list.imageurl }}</td>
+        <td>{{ list.unitsinStock }}</td>
+        <td>{{ list.dateCreated }}</td>
+        <td>{{ list.lastUpdated }}</td>
+        <td>{{ list.categoryId }}</td>
+
+      </tr>
+        
+    </table>
+</div>
+
