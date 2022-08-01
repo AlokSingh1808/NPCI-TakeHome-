@@ -1,0 +1,118 @@
+<!-- <h2 >Product List</h2>
+
+<div class="container-fluid">
+    <table class="table  table-hover table-primary table-striped">
+        <tr class="head">
+            <th>Product Id</th>
+            <th>sku</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Image Url</th>
+            <th>Units in Stock</th>
+            <th>Date Created</th>
+            <th>Last Updated</th>
+            <th>Category Id</th>
+        </tr>
+        <tr *ngFor = "let list of products">
+        <td>{{ list.id }}</td>
+        <td>{{ list.sku }}</td>
+        <td>{{ list.pname }}</td>
+        <td>{{ list.description }}</td>
+        <td>{{ list.unitPrice }}</td>
+        <td>{{ list.imageurl }}</td>
+        <td>{{ list.unitsinStock }}</td>
+        <td>{{ list.dateCreated }}</td>
+        <td>{{ list.lastUpdated }}</td>
+        <td>{{ list.categoryId }}</td>
+
+      </tr>
+        
+    </table>
+</div>
+ -->
+
+
+
+
+<div class="container" style="text-align: center;">
+    <p style="font-weight: bold; font-size: 40px; margin-top: 20px;">Products</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4" style="margin : 50px">
+    <div class="col" *ngFor="let temp of products; index as i">
+        <div class="card h-100">
+            <img src={{temp.imageurl}} class="card-img-top" alt="..." style="height: 150px; width: 150px;">
+            <a href="#" class="nav-link" data-bs-toggle="modal" [attr.data-bs-target]="'#test' + i">
+                <div class="card-body">
+                    <h5 class="card-title">{{temp.pname}}</h5>
+                    <p class="card-text">{{temp.description}}</p>
+                </div>
+            </a>
+            <div class="card-footer">
+                <a class="btn btn-primary" style="float: right;" data-bs-toggle="modal"
+                    [attr.data-bs-target]="'#test' + i">View Details</a>
+            </div>
+        </div>
+
+        <!-- Product Description -->
+        <div class="modal fade" id=test{{i}}>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h2 style="text-align: center; font-size: 30px; font-weight: bold;">{{temp.name}}</h2>
+                        <table style="border-spacing: 20px; border-collapse: separate;margin-left: 30px;">
+                            <tr>
+                                <td colspan="2">
+                                    <img src={{temp.imageurl}} alt=""
+                                        style="width: 80%; height: auto; margin : 15px 45px">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Product ID</th>
+                                <td>{{temp.id}}</td>
+                            </tr>
+                            <tr>
+                                <th>SKU</th>
+                                <td>{{temp.sku}}</td>
+                            </tr>
+                            <tr>
+                                <th>Product Name</th>
+                                <td>{{temp.pname}}</td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td>{{temp.description}}</td>
+                            </tr>
+                            <tr>
+                                <th>Price</th>
+                                <td>{{temp.unitPrice }}</td>
+                            </tr>
+                            <tr>
+                                <th>Stock</th>
+                                <td>{{temp.unitinStock}} Stock Available</td>
+                            </tr>
+                            <tr>
+                                <th>Date Created</th>
+                                <td>{{temp.dateCreated}}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td colspan="2">Last Updated on {{temp.dateCreated}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <div *ngIf="temp.active == 0; else elseBlock">
+                        <ng-template #elseBlock><a class="btn btn-danger text-end" aria-disabled="true">Out of Stock</a>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
